@@ -16,6 +16,32 @@ public class Jogo {
     
     public Jogo() {
     }
+
+    public char[][] getBoard() {
+        return board;
+    }
+
+    public void setBoard(char[][] board) {
+        this.board = board;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public int[] getCurrSquare() {
+        return currSquare;
+    }
+
+    public void setCurrSquare(int[] currSquare) {
+        this.currSquare = currSquare;
+    }
+    
+    
     
     
     
