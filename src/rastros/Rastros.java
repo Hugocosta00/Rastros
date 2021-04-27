@@ -3,14 +3,11 @@ package rastros;
 public class Rastros {
 
     public static void main(String[] args) {
-
-        Jogo jogo = new Jogo();
+        Player a=new ScannerPlayer("Coisa1");
+        Player b=new ScannerPlayer("Coisa2");
+        Jogo jogo = new Jogo(a,b);
         jogo.active_board();
-        while(true){
-            jogo.move();
-            jogo.active_board();
-            jogo.checkWinner();
-
+        while(!jogo.round()){
         }
 
 
