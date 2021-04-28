@@ -88,6 +88,8 @@ public class Jogo{
         int op=ler.nextInt();
         switch(op){
             case 7:{
+                // transformar em metodos individuais
+
                 this.board[getRow_a()][getCol_a()]='F';
                 this.col_a=getCol_a()-1;
                 this.row_a=getRow_a()-1;
