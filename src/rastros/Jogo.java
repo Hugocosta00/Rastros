@@ -124,31 +124,31 @@ public class Jogo{
             }
         }
         else if(getCol_a()-1<0){
-            if(board[getRow_a()+1][getCol_a()+1]=='F' && 
-                board[getRow_a()-1][getCol_a()]=='F' && 
-                board[getRow_a()][getCol_a()+1]=='F' && 
+            if(board[getRow_a()-1][getCol_a()]=='F' && 
                 board[getRow_a()-1][getCol_a()+1]=='F' && 
-                board[getRow_a()+1][getCol_a()]=='F'){
+                board[getRow_a()][getCol_a()+1]=='F' && 
+                board[getRow_a()+1][getCol_a()]=='F' && 
+                board[getRow_a()+1][getCol_a()+1]=='F'){
                 System.out.println("Player "+j.getNome()+" Wins!");
                 return true;
             } 
         }
         else if(getRow_a()+1>=7){
-            if(board[getRow_a()+1][getCol_a()+1]=='F' && 
+            if(board[getRow_a()-1][getCol_a()-1]=='F' && 
+                board[getRow_a()-1][getCol_a()]=='F' && 
+                board[getRow_a()-1][getCol_a()+1]=='F' && 
                 board[getRow_a()][getCol_a()-1]=='F' && 
-                board[getRow_a()][getCol_a()+1]=='F' && 
-                board[getRow_a()+1][getCol_a()-1]=='F' && 
-                board[getRow_a()+1][getCol_a()]=='F'){
+                board[getRow_a()][getCol_a()+1]=='F'){
                 System.out.println("Player "+j.getNome()+" Wins!");
                 return true;
             } 
         }
         else if(getRow_a()-1<0){
-            if(board[getRow_a()-1][getCol_a()-1]=='F' && 
-                board[getRow_a()][getCol_a()-1]=='F' && 
+            if(board[getRow_a()][getCol_a()-1]=='F' && 
                 board[getRow_a()][getCol_a()+1]=='F' && 
-                board[getRow_a()-1][getCol_a()+1]=='F' && 
-                board[getRow_a()-1][getCol_a()]=='F'){
+                board[getRow_a()+1][getCol_a()-1]=='F' && 
+                board[getRow_a()+1][getCol_a()]=='F' && 
+                board[getRow_a()+1][getCol_a()+1]=='F'){
                 System.out.println("Player "+j.getNome()+" Wins!");
                 return true;
             } 
