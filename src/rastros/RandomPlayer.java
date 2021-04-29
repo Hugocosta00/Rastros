@@ -23,8 +23,8 @@ public class RandomPlayer extends Player{
         int op;
         do{
             do{
-                op = rand.nextInt(9);
-            }while(op==5);
+                op = rand.nextInt(10);
+            }while(op==5 || op== 0);
         }while(!jogo.checkMove(op));
         jogo.movePiece(op);
     }

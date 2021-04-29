@@ -3,18 +3,25 @@ package rastros;
 public class Rastros {
 
     public static void main(String[] args) {
-        Player a=new RandomPlayer("joao");
+        Player a=new GreedyPlayer("joao");
         Player b=new RandomPlayer("vasco");
-        Jogo jogo = new Jogo(a,b);
-        //jogo.active_board();
-        while(!jogo.round()){
+        String winner;
+        int[] stats={0,0};
+        Jogo jogo; 
+        
+        for(int i=0;i<100;i++){
+            jogo = new Jogo(a,b);
+            winner=jogo.partida();
+            if (winner==a.getNome()) {
+                stats[0]++;
+            }else{
+                stats[1]++;
+            }
         }
-
-
-
-
-
-
+        
+        System.out.println(a.getNome()+" : "+stats[0]+" vitorias");
+        System.out.println(b.getNome()+" : "+stats[1]+" vitorias");
+       
     }
     
 }

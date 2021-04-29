@@ -11,6 +11,7 @@ public class Jogo{
     int col_a=4;
     Player player1;
     Player player2;
+    String winner;
 
     public Jogo(Player a,Player b) {
         for(int row = 0; row < this.board.length; ++row) {
@@ -55,17 +56,26 @@ public class Jogo{
         return col_a;
     }
     
+    public String partida(){
+        while(!round()){
+        }
+        
+        return winner;
+    }
+    
     public boolean round(){
         System.out.println("------ "+player1.getNome()+" ------");
         active_board();
         player1.makeMove(this);
         if(checkWinner(player1)==true){
+            winner=player1.getNome();
             return true;
         }
         System.out.println("------ "+player2.getNome()+" ------");
         active_board();
         player2.makeMove(this);
         if(checkWinner(player2)==true){
+            winner=player2.getNome();
             return true;
         }
         
@@ -172,10 +182,14 @@ public class Jogo{
         int randNum = rand.nextInt(1000);
         if(randNum<=499){
             player1=a;
+            player1.setTurn("First");
             player2=b;
+            player2.setTurn("Second");
         }else{
             player1=b;
+            player1.setTurn("Second");
             player2=a;
+            player2.setTurn("First");
         }
     }
     
