@@ -185,57 +185,97 @@ public class Jogo{
         |4|x|6|
         |1|2|3|
         */
+        
         switch(move){
             case 1:{
-                if(this.board[getRow_a()+1][getCol_a()-1]!='F')
-                    return true;
-                else
+                try{
+                    if(this.board[getRow_a()+1][getCol_a()-1]!='F')
+                        return true;
+                    else
+                        return false;
+                }catch(Exception e){
                     return false;
+                }
             }
             case 2:{
-                if(this.board[getRow_a()+1][getCol_a()]!='F')
-                    return true;
-                else
+                try{
+                    if(this.board[getRow_a()+1][getCol_a()]!='F')
+                        return true;
+                    else
+                        return false;
+                }catch(Exception e){
                     return false;
+                }
+                
             }
             case 3:{
-                if(this.board[getRow_a()+1][getCol_a()+1]!='F')
-                    return true;
-                else
+                try{
+                    if(this.board[getRow_a()+1][getCol_a()+1]!='F')
+                        return true;
+                    else
+                        return false;
+                }catch(Exception e){
                     return false;
+                }
+                
             }
             case 4:{
-                if(this.board[getRow_a()][getCol_a()-1]!='F')
-                    return true;
-                else
+                try{
+                    if(this.board[getRow_a()][getCol_a()-1]!='F')
+                        return true;
+                    else
+                        return false;
+                }catch(Exception e){
                     return false;
+                }
+                
             }
             case 6:{
-                if(this.board[getRow_a()][getCol_a()+1]!='F')
-                    return true;
-                else
+                try{
+                    if(this.board[getRow_a()][getCol_a()+1]!='F')
+                        return true;
+                    else
+                        return false;
+                }catch(Exception e){
                     return false;
+                }
+                
             }
             case 7:{
-                if(this.board[getRow_a()-1][getCol_a()-1]!='F')
-                    return true;
-                else
+                try{
+                    if(this.board[getRow_a()-1][getCol_a()-1]!='F')
+                        return true;
+                    else
+                        return false;
+                }catch(Exception e){
                     return false;
+                }
+                
             }
             case 8:{
-                if(this.board[getRow_a()-1][getCol_a()]!='F')
-                    return true;
-                else
+                try{
+                    if(this.board[getRow_a()-1][getCol_a()]!='F')
+                        return true;
+                    else
+                        return false;
+                    
+                }catch(Exception e){
                     return false;
+                }
             }
             case 9:{
-                if(this.board[getRow_a()-1][getCol_a()+1]!='F')
-                    return true;
-                else
+                try{
+                    if(this.board[getRow_a()-1][getCol_a()+1]!='F')
+                        return true;
+                    else
+                        return false;
+                }catch(Exception e){
                     return false;
+                }
             }
+            default:
+                return false;
         }
-        return false;
     }
 
     public void movePiece(int move){
