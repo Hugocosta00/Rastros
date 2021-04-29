@@ -9,6 +9,8 @@ public class Jogo{
     int size = 7;
     int row_a=2;
     int col_a=4;
+    int nBlocked;
+    int[][] blocked;
     Player player1;
     Player player2;
     String winner;
@@ -19,6 +21,8 @@ public class Jogo{
                 this.board[row][col] = 'O';
             }
         }
+        blocked = new int[47][2];
+        nBlocked = 0;
         coinFlip(a, b);
         setInicio();
         setFim();
@@ -55,6 +59,14 @@ public class Jogo{
     public int getCol_a() {
         return col_a;
     }
+
+    public int getnBlocked() {
+        return nBlocked;
+    }
+
+    public int[][] getBlocked() {
+        return blocked;
+    }
     
     public String partida(){
         while(!round()){
@@ -64,15 +76,15 @@ public class Jogo{
     }
     
     public boolean round(){
-        System.out.println("------ "+player1.getNome()+" ------");
-        active_board();
+        //System.out.println("------ "+player1.getNome()+" ------");
+        //active_board();
         player1.makeMove(this);
         if(checkWinner(player1)==true){
             winner=player1.getNome();
             return true;
         }
-        System.out.println("------ "+player2.getNome()+" ------");
-        active_board();
+        //System.out.println("------ "+player2.getNome()+" ------");
+        //active_board();
         player2.makeMove(this);
         if(checkWinner(player2)==true){
             winner=player2.getNome();
@@ -187,9 +199,9 @@ public class Jogo{
             player2.setTurn("Second");
         }else{
             player1=b;
-            player1.setTurn("Second");
+            player1.setTurn("First");
             player2=a;
-            player2.setTurn("First");
+            player2.setTurn("Second");
         }
     }
     
@@ -296,6 +308,9 @@ public class Jogo{
         switch(move){
             case 7:{
                 this.board[getRow_a()][getCol_a()]='F';
+                this.blocked[nBlocked][0]=getRow_a();
+                this.blocked[nBlocked][1]=getCol_a();
+                this.nBlocked++;
                 this.col_a=getCol_a()-1;
                 this.row_a=getRow_a()-1;
                 this.board[row_a][col_a]='X';
@@ -303,12 +318,18 @@ public class Jogo{
             }
             case 8:{
                 this.board[getRow_a()][getCol_a()]='F';
+                this.blocked[nBlocked][0]=getRow_a();
+                this.blocked[nBlocked][1]=getCol_a();
+                this.nBlocked++;
                 this.row_a=getRow_a()-1;
                 this.board[row_a][col_a]='X';
                 break;
             }
             case 9:{
                 this.board[getRow_a()][getCol_a()]='F';
+                this.blocked[nBlocked][0]=getRow_a();
+                this.blocked[nBlocked][1]=getCol_a();
+                this.nBlocked++;
                 this.col_a=getCol_a()+1;
                 this.row_a=getRow_a()-1;
                 this.board[row_a][col_a]='X';
@@ -316,12 +337,18 @@ public class Jogo{
             }
             case 6:{
                 this.board[getRow_a()][getCol_a()]='F';
+                this.blocked[nBlocked][0]=getRow_a();
+                this.blocked[nBlocked][1]=getCol_a();
+                this.nBlocked++;
                 this.col_a=getCol_a()+1;
                 this.board[row_a][col_a]='X';
                 break;
             }
             case 3:{
                 this.board[getRow_a()][getCol_a()]='F';
+                this.blocked[nBlocked][0]=getRow_a();
+                this.blocked[nBlocked][1]=getCol_a();
+                this.nBlocked++;
                 this.col_a=getCol_a()+1;
                 this.row_a=getRow_a()+1;
                 this.board[row_a][col_a]='X';
@@ -329,12 +356,18 @@ public class Jogo{
             }
             case 2:{
                 this.board[getRow_a()][getCol_a()]='F';
+                this.blocked[nBlocked][0]=getRow_a();
+                this.blocked[nBlocked][1]=getCol_a();
+                this.nBlocked++;
                 this.row_a=getRow_a()+1;
                 this.board[row_a][col_a]='X';
                 break;
             }
             case 1:{
                 this.board[getRow_a()][getCol_a()]='F';
+                this.blocked[nBlocked][0]=getRow_a();
+                this.blocked[nBlocked][1]=getCol_a();
+                this.nBlocked++;
                 this.col_a=getCol_a()-1;
                 this.row_a=getRow_a()+1;
                 this.board[row_a][col_a]='X';
@@ -342,6 +375,9 @@ public class Jogo{
             }
             case 4:{
                 this.board[getRow_a()][getCol_a()]='F';
+                this.blocked[nBlocked][0]=getRow_a();
+                this.blocked[nBlocked][1]=getCol_a();
+                this.nBlocked++;
                 this.col_a=getCol_a()-1;
                 this.board[row_a][col_a]='X';
                 break;

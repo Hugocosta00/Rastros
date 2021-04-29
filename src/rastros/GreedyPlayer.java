@@ -21,11 +21,7 @@ public class GreedyPlayer extends Player{
     public void makeMove(Jogo jogo){
         Random rand = new Random();
         int op;
-        /*do{
-            do{
-                op = rand.nextInt(10);
-            }while(op==5 || op== 0);
-        }while(!jogo.checkMove(op));*/
+        
         if(this.turn=="First"){
             if(jogo.checkMove(1)){
                 jogo.movePiece(1);
