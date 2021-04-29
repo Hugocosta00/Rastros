@@ -3,18 +3,18 @@ package rastros;
 public class Rastros {
 
     public static void main(String[] args) {
-        Player a=new RandomPlayer("Random");
-        Player b=new AStarPlayer("AStar");
+        Player a=new AStarPlayer("AStar");
+        Player b=new GreedyPlayer("Greedy");
         String winner;
         int[] stats={0,0};
         Jogo jogo; 
         
-        for(int i=0;i<10000;i++){
+        for(int i=0;i<1000;i++){
             jogo = new Jogo(a,b);
             winner=jogo.partida();
-            if (winner==a.getNome()) {
+            if (winner.equals(a.getNome())) {
                 stats[0]++;
-            }else{
+            }else if(winner.equals(b.getNome())){
                 stats[1]++;
             }
         }

@@ -6,6 +6,7 @@
 package rastros;
 
 import java.util.List;
+import java.util.Random;
 
 /**
  *
@@ -20,8 +21,11 @@ public class AStarPlayer extends Player{
     public void makeMove(Jogo jogo){
         Node initialNode = new Node(jogo.getRow_a(),jogo.getCol_a());
         Node finalNode;
+        Node temp;
+        Random rand = new Random();
+        int op;
         int[] bestMove = new int[2];
-        if(this.turn=="First"){
+        if("First".equals(this.turn)){
             finalNode=new Node(6,0);
         }else{
             finalNode=new Node(0,6);
@@ -30,41 +34,48 @@ public class AStarPlayer extends Player{
         int[][] blocksArray = generateBlockedArray(jogo.getBlocked(), jogo.getnBlocked());
         aStar.setBlocks(blocksArray);
         List<Node> path = aStar.findPath();
-        for (Node node : path) {
-            if(node.getCol() != jogo.getCol_a() && node.getRow() != jogo.getRow_a()){
-                bestMove[0]=node.getRow();
-                bestMove[1]=node.getCol();
-                break;
+        if(!path.isEmpty()){
+            temp=path.get(1);
+            bestMove[0]=temp.getRow();
+            bestMove[1]=temp.getCol();
+
+            //System.out.println("best move "+bestMove[0]+","+bestMove[1]);
+
+            if(jogo.getCol_a() == bestMove[1]){
+                if(jogo.getRow_a()-1 == bestMove[0]){
+                    jogo.movePiece(8);
+                }
+                else if(jogo.getRow_a()+1 == bestMove[0]){
+                    jogo.movePiece(2);
+                }
+
+            }else if(jogo.getCol_a()-1 == bestMove[1]){
+                if(jogo.getRow_a() == bestMove[0]){
+                    jogo.movePiece(4);
+                }else if(jogo.getRow_a()-1 == bestMove[0]){
+                    jogo.movePiece(7);
+                }
+                else if(jogo.getRow_a()+1 == bestMove[0]){
+                    jogo.movePiece(1);
+                }
             }
-        }
-        
-        if(jogo.getCol_a() == bestMove[1]){
-            if(jogo.getRow_a()-1 == bestMove[0]){
-                jogo.movePiece(8);
+            else if(jogo.getCol_a()+1 == bestMove[1]){
+                if(jogo.getRow_a() == bestMove[0]){
+                    jogo.movePiece(6);
+                }else if(jogo.getRow_a()-1 == bestMove[0]){
+                    jogo.movePiece(9);
+                }
+                else if(jogo.getRow_a()+1 == bestMove[0]){
+                    jogo.movePiece(3);
+                }
             }
-            else if(jogo.getRow_a()+1 == bestMove[0]){
-                jogo.movePiece(2);
-            }
-            
-        }else if(jogo.getCol_a()-1 == bestMove[1]){
-            if(jogo.getRow_a() == bestMove[0]){
-                jogo.movePiece(4);
-            }else if(jogo.getRow_a()-1 == bestMove[0]){
-                jogo.movePiece(7);
-            }
-            else if(jogo.getRow_a()+1 == bestMove[0]){
-                jogo.movePiece(1);
-            }
-        }
-        else if(jogo.getCol_a()+1 == bestMove[1]){
-            if(jogo.getRow_a() == bestMove[0]){
-                jogo.movePiece(6);
-            }else if(jogo.getRow_a()-1 == bestMove[0]){
-                jogo.movePiece(9);
-            }
-            else if(jogo.getRow_a()+1 == bestMove[0]){
-                jogo.movePiece(3);
-            }
+        }else{
+            do{
+                do{
+                    op = rand.nextInt(10);
+                }while(op==5 || op== 0);
+            }while(!jogo.checkMove(op));
+            jogo.movePiece(op);
         }
     }
     

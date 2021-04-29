@@ -22,7 +22,7 @@ public class GreedyPlayer extends Player{
         Random rand = new Random();
         int op;
         
-        if(this.turn=="First"){
+        if("First".equals(this.turn)){
             if(jogo.checkMove(1)){
                 jogo.movePiece(1);
             }else if(jogo.checkMove(4)){

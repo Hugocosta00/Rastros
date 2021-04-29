@@ -80,14 +80,16 @@ public class Jogo{
         //active_board();
         player1.makeMove(this);
         if(checkWinner(player1)==true){
-            winner=player1.getNome();
+            System.out.println("Player "+player1.getNome()+" Won");
+            this.winner=player1.getNome();
             return true;
         }
         //System.out.println("------ "+player2.getNome()+" ------");
         //active_board();
         player2.makeMove(this);
         if(checkWinner(player2)==true){
-            winner=player2.getNome();
+            System.out.println("Player "+player2.getNome()+" Won");
+            this.winner=player2.getNome();
             return true;
         }
         
@@ -109,11 +111,9 @@ public class Jogo{
 
     public boolean checkWinner(Player j){
         if(row_a==6 && col_a==0){
-            System.out.println("Player "+player2.getNome()+" Wins!");
             return true;
         }
         if(row_a==0 && col_a==6){
-            System.out.println("Player "+player1.getNome()+" Wins!");
             return true;
         }
          
@@ -121,7 +121,6 @@ public class Jogo{
             if(board[getRow_a()-1][getCol_a()-1]=='F' && 
                 board[getRow_a()-1][getCol_a()]=='F' && 
                 board[getRow_a()][getCol_a()-1]=='F'){
-                System.out.println("Player "+j.getNome()+" Wins!");
                 return true;
             }
             
@@ -130,7 +129,6 @@ public class Jogo{
             if(board[getRow_a()+1][getCol_a()+1]=='F' && 
                 board[getRow_a()+1][getCol_a()]=='F' && 
                 board[getRow_a()][getCol_a()+1]=='F'){
-                System.out.println("Player "+j.getNome()+" Wins!");
                 return true;
             }
             
@@ -141,7 +139,6 @@ public class Jogo{
                 board[getRow_a()][getCol_a()-1]=='F' && 
                 board[getRow_a()+1][getCol_a()-1]=='F' && 
                 board[getRow_a()+1][getCol_a()]=='F'){
-                System.out.println("Player "+j.getNome()+" Wins!");
                 return true;
             }
         }
@@ -151,7 +148,6 @@ public class Jogo{
                 board[getRow_a()][getCol_a()+1]=='F' && 
                 board[getRow_a()+1][getCol_a()]=='F' && 
                 board[getRow_a()+1][getCol_a()+1]=='F'){
-                System.out.println("Player "+j.getNome()+" Wins!");
                 return true;
             } 
         }
@@ -161,7 +157,6 @@ public class Jogo{
                 board[getRow_a()-1][getCol_a()+1]=='F' && 
                 board[getRow_a()][getCol_a()-1]=='F' && 
                 board[getRow_a()][getCol_a()+1]=='F'){
-                System.out.println("Player "+j.getNome()+" Wins!");
                 return true;
             } 
         }
@@ -171,19 +166,17 @@ public class Jogo{
                 board[getRow_a()+1][getCol_a()-1]=='F' && 
                 board[getRow_a()+1][getCol_a()]=='F' && 
                 board[getRow_a()+1][getCol_a()+1]=='F'){
-                System.out.println("Player "+j.getNome()+" Wins!");
                 return true;
             } 
         }
         else if(board[getRow_a()-1][getCol_a()-1]=='F' && 
-           board[getRow_a()-1][getCol_a()]=='F' && 
-           board[getRow_a()-1][getCol_a()+1]=='F' && 
-           board[getRow_a()][getCol_a()-1]=='F' && 
-           board[getRow_a()][getCol_a()+1]=='F' && 
-           board[getRow_a()+1][getCol_a()-1]=='F' && 
-           board[getRow_a()+1][getCol_a()]=='F' && 
-           board[getRow_a()+1][getCol_a()+1]=='F'){
-            System.out.println("Player "+j.getNome()+" Wins!");
+                board[getRow_a()-1][getCol_a()]=='F' && 
+                board[getRow_a()-1][getCol_a()+1]=='F' && 
+                board[getRow_a()][getCol_a()-1]=='F' && 
+                board[getRow_a()][getCol_a()+1]=='F' && 
+                board[getRow_a()+1][getCol_a()-1]=='F' && 
+                board[getRow_a()+1][getCol_a()]=='F' && 
+                board[getRow_a()+1][getCol_a()+1]=='F'){
             return true;
         }
         return false;
