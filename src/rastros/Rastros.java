@@ -9,7 +9,7 @@ public class Rastros {
         int[] stats={0,0};
         Jogo jogo; 
         
-        for(int i=0;i<1000;i++){
+        for(int i=0;i<10000;i++){
             jogo = new Jogo(a,b);
             winner=jogo.partida();
             if (winner==a.getNome()) {

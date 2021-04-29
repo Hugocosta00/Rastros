@@ -22,9 +22,9 @@ public class AStarPlayer extends Player{
         Node finalNode;
         int[] bestMove = new int[2];
         if(this.turn=="First"){
-            finalNode=new Node(0,6);
-        }else{
             finalNode=new Node(6,0);
+        }else{
+            finalNode=new Node(0,6);
         }
         AStar aStar = new AStar(7,7,initialNode,finalNode);
         int[][] blocksArray = generateBlockedArray(jogo.getBlocked(), jogo.getnBlocked());
@@ -37,7 +37,6 @@ public class AStarPlayer extends Player{
                 break;
             }
         }
-        
         
         if(jogo.getCol_a() == bestMove[1]){
             if(jogo.getRow_a()-1 == bestMove[0]){
