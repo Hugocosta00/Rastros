@@ -28,11 +28,11 @@ public class Jogo{
         setFim();
 
     }
-    public void setFim(){
+    private void setFim(){
         this.board[6][0] = 'u';
         this.board[0][6] = 'd';
     }
-    public void setInicio(){
+    private void setInicio(){
         this.board[row_a][col_a]= 'X';
     }
 
@@ -76,16 +76,16 @@ public class Jogo{
     }
     
     public boolean round(){
-        //System.out.println("------ "+player1.getNome()+" ------");
-        //active_board();
+        System.out.println("------ "+player1.getNome()+" ------");
+        active_board();
         player1.makeMove(this);
         if(checkWinner(player1)==true){
             System.out.println("Player "+player1.getNome()+" Won");
             this.winner=player1.getNome();
             return true;
         }
-        //System.out.println("------ "+player2.getNome()+" ------");
-        //active_board();
+        System.out.println("------ "+player2.getNome()+" ------");
+        active_board();
         player2.makeMove(this);
         if(checkWinner(player2)==true){
             System.out.println("Player "+player2.getNome()+" Won");
@@ -182,20 +182,21 @@ public class Jogo{
         return false;
     }
     
-    public void coinFlip(Player a,Player b){
+    private void coinFlip(Player a,Player b){
         Random rand = new Random();
         int randNum = rand.nextInt(1000);
         if(randNum<=499){
-            player1=a;
-            player1.setTurn("First");
-            player2=b;
-            player2.setTurn("Second");
+            this.player1=a;
+            this.player1.setTurn("First");
+            this.player2=b;
+            this.player2.setTurn("Second");
         }else{
-            player1=b;
-            player1.setTurn("First");
-            player2=a;
-            player2.setTurn("Second");
+            this.player1=b;
+            this.player1.setTurn("First");
+            this.player2=a;
+            this.player2.setTurn("Second");
         }
+        System.out.println(this.player1.nome+" joga primeiro!");
     }
     
     public boolean checkMove(int move){
