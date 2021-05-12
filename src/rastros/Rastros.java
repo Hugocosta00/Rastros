@@ -52,6 +52,7 @@ public class Rastros {
                             break;
                         }
                         case 4:{
+                            b=new MinimaxPlayer("Computador");
                             break;
                         }
                     }
@@ -77,6 +78,7 @@ public class Rastros {
                             break;
                         }
                         case 4:{
+                            a=new MinimaxPlayer("Computador1");
                             break;
                         }
                     }
@@ -96,6 +98,7 @@ public class Rastros {
                             break;
                         }
                         case 4:{
+                            b=new MinimaxPlayer("Computador2");
                             break;
                         }
                     }

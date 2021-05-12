@@ -4,9 +4,8 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Jogo{
+public class Jogo implements Cloneable{
     char[][] board = new char[7][7];
-    int size = 7;
     int row_a=2;
     int col_a=4;
     int nBlocked;
@@ -14,7 +13,17 @@ public class Jogo{
     Player player1;
     Player player2;
     String winner;
-
+    public Jogo(){
+        for(int row = 0; row < this.board.length; ++row) {
+            for(int col = 0; col < this.board[0].length; ++col) {
+                this.board[row][col] = 'O';
+            }
+        }
+        blocked = new int[47][2];
+        nBlocked = 0;
+        setInicio();
+        setFim();
+    }
     public Jogo(Player a,Player b) {
         for(int row = 0; row < this.board.length; ++row) {
             for(int col = 0; col < this.board[0].length; ++col) {
@@ -28,6 +37,7 @@ public class Jogo{
         setFim();
 
     }
+
     private void setFim(){
         this.board[6][0] = 'u';
         this.board[0][6] = 'd';
@@ -44,20 +54,28 @@ public class Jogo{
         this.board = board;
     }
 
-    public int getSize() {
-        return size;
+
+    public void setRow_a(int row_a) {
+        this.row_a = row_a;
     }
 
-    public void setSize(int size) {
-        this.size = size;
+    public void setCol_a(int col_a) {
+        this.col_a = col_a;
     }
-
 
     public int getRow_a() {
         return row_a;
     }
     public int getCol_a() {
         return col_a;
+    }
+
+    public void setnBlocked(int nBlocked) {
+        this.nBlocked = nBlocked;
+    }
+
+    public void setBlocked(int[][] blocked) {
+        this.blocked = blocked;
     }
 
     public int getnBlocked() {
@@ -75,11 +93,11 @@ public class Jogo{
         return winner;
     }
     
-    public boolean round(){
+    public boolean round() {
         System.out.println("------ "+player1.getNome()+" ------");
         active_board();
         player1.makeMove(this);
-        if(checkWinner(player1)==true){
+        if(checkWinner(player1)){
             System.out.println("Player "+player1.getNome()+" Won");
             this.winner=player1.getNome();
             return true;
@@ -87,9 +105,9 @@ public class Jogo{
         System.out.println("------ "+player2.getNome()+" ------");
         active_board();
         player2.makeMove(this);
-        if(checkWinner(player2)==true){
+        if(checkWinner(player2)){
             System.out.println("Player "+player2.getNome()+" Won");
-            this.winner=player2.getNome();
+            this.winner=player2.getNome();  // alterar ________________________________________________
             return true;
         }
         
@@ -379,6 +397,34 @@ public class Jogo{
         }
 
     }
+
+    public Jogo getClone() {
+
+        Jogo cloned= new Jogo();
+
+        cloned.setRow_a(this.getRow_a());
+        cloned.setCol_a(this.getCol_a());
+        cloned.setBlocked(this.getBlocked());
+        cloned.setnBlocked(this.nBlocked);
+        for (int row = 0; row < 7; row++){
+            for (int col = 0; col < 7; col++){
+                cloned.board[row][col] = this.board[row][col];
+            }
+        }
+        return cloned;
+    }
+
+
+    public boolean isFinished(){
+        if(row_a==6 && col_a==0){
+            return true;
+        }
+        if(row_a==0 && col_a==6){
+            return true;
+        }
+        return false;
+    }
+
 
 
 
