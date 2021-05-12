@@ -319,6 +319,8 @@ public class Jogo implements Cloneable{
     public void movePiece(int move){
         switch(move){
             case 7:{
+                // transformar em metodos individuais
+
                 this.board[getRow_a()][getCol_a()]='F';
                 this.blocked[nBlocked][0]=getRow_a();
                 this.blocked[nBlocked][1]=getCol_a();
